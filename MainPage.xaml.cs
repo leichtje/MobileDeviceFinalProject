@@ -1,25 +1,13 @@
-﻿namespace MobileDeviceFinalProject
-{
-    public partial class MainPage : ContentPage
-    {
-        int count = 0;
+﻿namespace MobileDeviceFinalProject;
 
-        public MainPage()
-        {
+    public partial class MainPage : ContentPage {
+        
+        private readonly LocalDbService _dbService;
+        
+        public MainPage(LocalDbService dbService) {
             InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            _dbService = dbService;
         }
     }
 
-}
+
