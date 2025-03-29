@@ -33,5 +33,10 @@ namespace MobileDeviceFinalProject {
         public async Task Delete(Medication medication) {
             await _connection.DeleteAsync(medication);
         }
+
+        // drop all rows in the DB. for testing 
+        public async Task DropAllRows() {
+           await _connection.ExecuteAsync("DELETE FROM medications_table");
+        }
     }
 }
