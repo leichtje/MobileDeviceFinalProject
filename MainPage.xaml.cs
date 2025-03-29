@@ -1,25 +1,28 @@
-﻿namespace MobileDeviceFinalProject
-{
-    public partial class MainPage : ContentPage
-    {
-        int count = 0;
+﻿namespace MobileDeviceFinalProject;
 
-        public MainPage()
-        {
+    public partial class MainPage : ContentPage {
+        
+        private readonly LocalDbService _dbService;
+        
+        public MainPage(LocalDbService dbService) {
             InitializeComponent();
-        }
+            _dbService = dbService;
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
+            // test
+            Medication med = new Medication {
+                MedName = "Adderall",
+                Dosage = "9",
+                MedInstructions = "Yes",
+                TimeTaken = "3:00PM",
+                DaysTaken = "MWF"
+            };
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+            // new row
+            Task.Run(async() => await _dbService.Create(med));
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            // get all rows in DB and bind to MedicationListView ItemSource
+            Task.Run(async() => MedicationListView.ItemsSource = await _dbService.GetMedications());
         }
     }
 
-}
+
