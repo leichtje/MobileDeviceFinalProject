@@ -35,7 +35,7 @@
                             
                             <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center">
                                 <Button Text="Edit" Height="10" Width="10"></Button>
-                                <Button Text="X" Height="10" Width="10"></Button>    
+                                <Button Text="X" Height="10" Width="10" Clicked="Xbutton_Clicked"></Button>    
                             </HorizontalStackLayout>
                             
                             <StackLayout Grid.Column="2">
