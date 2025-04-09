@@ -1,4 +1,8 @@
-﻿namespace MobileDeviceFinalProject;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
+
+namespace MobileDeviceFinalProject;
 
 public partial class MainPage : ContentPage
 {
@@ -11,6 +15,7 @@ public partial class MainPage : ContentPage
         _dbService = dbService;
 
         // test
+        /*
         Medication med = new Medication
         {
             MedName = "Adderall",
@@ -19,18 +24,37 @@ public partial class MainPage : ContentPage
             TimeTaken = "3:00PM",
             DaysTaken = "MWF"
         };
+        */
+        
+    }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadMedications();
+    }
 
-        // new row
-        Task.Run(async () => await _dbService.Create(med));
-
-        // get all rows in DB and bind to MedicationListView ItemSource
-        Task.Run(async () => MedicationListView.ItemsSource = await _dbService.GetMedications());
+    private async Task LoadMedications()
+    {
+        var meds = await _dbService.GetMedications();
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            MedicationListView.ItemsSource = meds;
+        });
     }
 
     //add x button click event
     private async void Xbutton_Clicked(object sender, EventArgs e)
     {
-        
+        if ((sender as Button)?.BindingContext is Medication med)
+        {
+            await _dbService.Delete(med);
+            await LoadMedications();
+        }
+    }
+
+    private async void AddNew_Button_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(AddMedicationPage));
     }
 }
 
