@@ -12,9 +12,11 @@ public static class MauiProgram {
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 		builder.Services.AddSingleton<LocalDbService>();
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddTransient<AddMedicationPage>();
 
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();
