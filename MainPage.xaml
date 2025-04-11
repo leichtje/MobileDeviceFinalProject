@@ -13,7 +13,7 @@
             </Grid.ColumnDefinitions>
             
             <Label Text="My Medications" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0"/>
-            <Button Text="Add New" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="2"/>
+            <Button Text="Add New" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="2" Clicked="OnAddClicked"/>
         </Grid>
         
         

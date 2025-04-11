@@ -1,4 +1,6 @@
-﻿namespace MobileDeviceFinalProject;
+﻿using Microsoft.Maui.Controls;
+
+namespace MobileDeviceFinalProject;
 
     public partial class MainPage : ContentPage {
         
@@ -22,7 +24,12 @@
 
             // get all rows in DB and bind to MedicationListView ItemSource
             Task.Run(async() => MedicationListView.ItemsSource = await _dbService.GetMedications());
-        }
+            }
+
+            public async void OnAddClicked(object sender, EventArgs e)
+            {
+               await Navigation.PushAsync(new AddMed());
+            }
     }
 
 
