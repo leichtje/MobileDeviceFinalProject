@@ -17,7 +17,7 @@
         </Grid>
         
         
-        <ListView x:Name="MedicationListView" HasUnevenRows="True" SeparatorVisibility="Default">
+        <ListView x:Name="MedicationListView" HasUnevenRows="True" SeparatorVisibility="Default" ItemTapped="OnInfoTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

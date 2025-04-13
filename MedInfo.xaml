@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileDeviceFinalProject.MedInfo"
              Title="MedInfo">
-   <StackLayout Padding="20" Spacing="15">
+    
+    <StackLayout Padding="20" Spacing="15">
       <Label Text="{Binding MedName}" />
       <Label Text="{Binding Dosage}" />
       <Label Text="{Binding MedInstructions}" />
@@ -11,4 +12,5 @@
       <Label Text="{Binding DaysTaken}" />
       <Button Text="Back" Clicked="OnBackClicked" />
    </StackLayout>
+    
 </ContentPage>

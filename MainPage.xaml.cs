@@ -30,8 +30,7 @@ public partial class MainPage : ContentPage
         */
         
     }
-    protected override async void OnAppearing()
-    {
+    protected override async void OnAppearing() {
         base.OnAppearing();
         await LoadMedications();
         
@@ -40,8 +39,7 @@ public partial class MainPage : ContentPage
         MedicationListView.ItemsSource = medications;
     }
 
-    private async Task LoadMedications()
-    {
+    private async Task LoadMedications() {
         var meds = await _dbService.GetMedications();
         MainThread.BeginInvokeOnMainThread(() =>
         {
@@ -49,27 +47,36 @@ public partial class MainPage : ContentPage
         });
     }
     
+    // Edit button event handler
     private void OnEditButtonClicked(object sender, EventArgs args) {
 
             var button = sender as Button;
             var medication = (Medication)button.BindingContext;
             
             Navigation.PushAsync(new EditPage(medication, _dbService));
-        }
+    }
 
-    //add x button click event
-    private async void Xbutton_Clicked(object sender, EventArgs e)
-    {
-        if ((sender as Button)?.BindingContext is Medication med)
-        {
+    // X button event handler
+    private async void Xbutton_Clicked(object sender, EventArgs e) {
+        
+        if ((sender as Button)?.BindingContext is Medication med) {
             await _dbService.Delete(med);
             await LoadMedications();
         }
     }
 
-    private async void AddNew_Button_Clicked(object sender, EventArgs e)
-    {
+    // add new button event handler
+    private async void AddNew_Button_Clicked(object sender, EventArgs e) {
         await Shell.Current.GoToAsync(nameof(AddMedicationPage));
+    }
+    
+    // item tapped event handler
+    private async void OnInfoTapped(object sender, ItemTappedEventArgs e) {
+        
+        if (e.Item is Medication medication)
+        {
+            await Navigation.PushAsync(new MedInfo(medication));
+        }
     }
 }
 
