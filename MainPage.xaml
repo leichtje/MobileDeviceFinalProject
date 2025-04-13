@@ -12,12 +12,13 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             
-            <Label Text="My Medications" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0"/>
+            <Label Text="My Medications" FontSize="22" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0"/>
             <Button Text="Add New" Clicked="AddNew_Button_Clicked" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="2"/>
         </Grid>
         
         
-        <ListView x:Name="MedicationListView" HasUnevenRows="True" SeparatorVisibility="Default" ItemTapped="OnInfoTapped">
+        <ListView x:Name="MedicationListView" HasUnevenRows="True" SeparatorVisibility="Default" ItemTapped="OnInfoTapped"
+                  Margin="0,20,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
