@@ -23,9 +23,9 @@
                     <ViewCell>
                         <Grid VerticalOptions="Fill" HorizontalOptions="Fill" Padding="5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="80"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="80"/>
                             </Grid.ColumnDefinitions>
                             
                             <StackLayout Grid.Column="0">
@@ -41,8 +41,8 @@
                             </HorizontalStackLayout>
                             
                             <StackLayout Grid.Column="2">
-                                <Label Text="{Binding TimeTaken}" />
-                                <Label Text="{Binding DaysTaken}" />
+                                <Label Text="{Binding TimeTaken}" HorizontalOptions="End" />
+                                <Label Text="{Binding DaysTaken}" HorizontalOptions="End" />
                             </StackLayout>
                         </Grid>
                         
