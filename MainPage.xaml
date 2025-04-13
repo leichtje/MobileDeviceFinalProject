@@ -21,21 +21,26 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5">
+                        <Grid VerticalOptions="Fill" HorizontalOptions="Fill" Padding="5">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             
                             <StackLayout Grid.Column="0">
-                                <Label Text="{Binding MedName}" FontSize="14" />
-                                <Label Text="{Binding Dosage}" FontSize="14" />
+                                <Label Text="{Binding MedName}"/>
+                                <Label Text="{Binding Dosage}"/>
                             </StackLayout>
                             
                             <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center">
+
+                                <Button Text="Edit" Clicked="OnEditButtonClicked" Height="10" Width="10"></Button>
+                                <Button Text="X" Height="10" Width="10"></Button>    
+
                                 <Button Text="Edit" Height="10" Width="10"></Button>
                                 <Button Text="X" Clicked="Xbutton_Clicked" Height="10" Width="10"></Button>    
+
                             </HorizontalStackLayout>
                             
                             <StackLayout Grid.Column="2">

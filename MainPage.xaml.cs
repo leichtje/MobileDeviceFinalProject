@@ -13,6 +13,9 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         _dbService = dbService;
+        
+        // get all rows in DB and bind to MedicationListView ItemSource
+        Task.Run(async() => MedicationListView.ItemsSource = await _dbService.GetMedications());
 
         // test
         /*
@@ -31,6 +34,10 @@ public partial class MainPage : ContentPage
     {
         base.OnAppearing();
         await LoadMedications();
+        
+        // get current values from database everytime page appears, otherwise old data is shown after an edit
+        var medications = await _dbService.GetMedications();
+        MedicationListView.ItemsSource = medications;
     }
 
     private async Task LoadMedications()
@@ -41,6 +48,14 @@ public partial class MainPage : ContentPage
             MedicationListView.ItemsSource = meds;
         });
     }
+    
+    private void OnEditButtonClicked(object sender, EventArgs args) {
+
+            var button = sender as Button;
+            var medication = (Medication)button.BindingContext;
+            
+            Navigation.PushAsync(new EditPage(medication, _dbService));
+        }
 
     //add x button click event
     private async void Xbutton_Clicked(object sender, EventArgs e)

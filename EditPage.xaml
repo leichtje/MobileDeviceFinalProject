@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDeviceFinalProject.EditPage">
+    <ContentPage.Content>
+        
+        
+        <StackLayout Padding="10">
+            <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+            
+                <HorizontalStackLayout Grid.Column="0" HorizontalOptions="Fill">
+                    <Button Text="Back" Clicked="OnBackButtonClicked"/>
+                </HorizontalStackLayout>
+            </Grid>
+            
+            <VerticalStackLayout Margin="10" Spacing="10">
+                <Label Text="Medication Name"></Label>
+                <Entry x:Name="MedNameEntry"/>
+            
+                <Label Text="Dosage"/>
+                <Entry x:Name="DosageEntry"/>
+            
+                <Label Text="Special Instructions"/>
+                <Entry x:Name="SpecialInstructionsEntry"/>
+            
+                <Label Text="Time Taken"/>
+                <Entry x:Name="TimeTakenEntry"/>
+            
+                <Label Text="Days Taken"/>
+                <Entry x:Name="DaysTakenEntry"/>
+                
+                <Button Text="Save Changes" Clicked="OnSaveChangesClicked" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
