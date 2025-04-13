@@ -36,9 +36,6 @@
                             <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center">
 
                                 <Button Text="Edit" Clicked="OnEditButtonClicked" Height="10" Width="10"></Button>
-                                <Button Text="X" Height="10" Width="10"></Button>    
-
-                                <Button Text="Edit" Height="10" Width="10"></Button>
                                 <Button Text="X" Clicked="Xbutton_Clicked" Height="10" Width="10"></Button>    
 
                             </HorizontalStackLayout>
