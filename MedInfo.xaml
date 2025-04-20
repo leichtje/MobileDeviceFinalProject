@@ -5,12 +5,26 @@
              Title="MedInfo">
     
     <StackLayout Padding="20" Spacing="15">
-      <Label Text="{Binding MedName}" />
-      <Label Text="{Binding Dosage}" />
-      <Label Text="{Binding MedInstructions}" />
-      <Label Text="{Binding TimeTaken}" />
-      <Label Text="{Binding DaysTaken}" />
-      <Button Text="Back" Clicked="OnBackClicked" />
-   </StackLayout>
+        <Label Text="{Binding MedName}" />
+        
+        <Grid ColumnDefinitions="*,Auto,*" VerticalOptions="Center" Padding="10">
+            <!-- Left Column -->
+            <StackLayout Grid.Column="0" VerticalOptions="Center">
+                <Label Text="{Binding Dosage, StringFormat='Dosage: {0}'}" HorizontalOptions="Center"/>
+                <Label Text="{Binding MedInstructions}" />
+                <Label Text="Left Side" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Divider -->
+            <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="Gray" HorizontalOptions="Center" />
+
+            <!-- Right Column -->
+            <StackLayout Grid.Column="2" VerticalOptions="Center">
+                <Label Text="{Binding TimeTaken, StringFormat='Time Taken: {0}'}" />
+                <Label Text="{Binding DaysTaken}" />
+            </StackLayout>
+        </Grid>
+        <Button Text="Back" Clicked="OnBackClicked" />
+    </StackLayout>
     
 </ContentPage>
