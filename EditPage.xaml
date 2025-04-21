@@ -2,7 +2,8 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileDeviceFinalProject.EditPage">
+             x:Class="MobileDeviceFinalProject.EditPage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
     <ContentPage.Content>
         
         
@@ -34,8 +35,11 @@
             
                 <Label Text="Days Taken"/>
                 <Entry x:Name="DaysTakenEntry"/>
+
+                <Border>
+                   <Button Text="Save Changes" Clicked="OnSaveChangesClicked" HorizontalOptions="Fill"/>
+                </Border>
                 
-                <Button Text="Save Changes" Clicked="OnSaveChangesClicked" HorizontalOptions="Center"/>
             </VerticalStackLayout>
             
         </StackLayout>

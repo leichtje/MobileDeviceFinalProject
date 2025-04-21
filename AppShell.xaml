@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MobileDeviceFinalProject"
     Shell.FlyoutBehavior="Flyout"
-    Title="MobileDeviceFinalProject">
+    Title="PillZilla">
 
-    <ShellContent
+   <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
