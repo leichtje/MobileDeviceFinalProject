@@ -42,19 +42,19 @@
                                 <Label Text="{Binding MedName}" Style="{StaticResource ListItem}"/>
                                 <Label Text="{Binding Dosage}" Style="{StaticResource ListItem}"/>
                             </StackLayout>
-                            
-                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="15">
 
-                                <Button Text="Edit" Clicked="OnEditButtonClicked" Height="10" Width="10"></Button>
-                                <Button Text="Delete" Clicked="Xbutton_Clicked" HeightRequest="30" WidthRequest="50" />
-                            </HorizontalStackLayout>
+                           <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="5">
+                              <Button Text="Edit" Clicked="OnEditButtonClicked" Height="10" Width="10"></Button>
+                              <Button Text="X" Clicked="Xbutton_Clicked" Height="10" Width="10"></Button>
+                              <Button Text="⏳" Clicked="OnScheduleNotificationClicked" Height="10" WidthRequest="70" />
+                           </HorizontalStackLayout>
 
+                           <StackLayout Grid.Column="2" Spacing="5">
+                              <Label Text="{Binding TimeTaken}" HorizontalOptions="End" Style="{StaticResource ListItem}"/>
+                              <Label Text="{Binding DaysTaken}" HorizontalOptions="End" Style="{StaticResource ListItem}"/>
+                           </StackLayout>
 
-                            <StackLayout Grid.Column="2" Spacing="5">
-                                <Button Text="Remind" Clicked="OnScheduleNotificationClicked" HeightRequest="30" WidthRequest="70" />
-                                <Label Text="{Binding TimeTaken}" HorizontalOptions="End"/>
-                            </StackLayout>
-                        </Grid>
+                  </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
