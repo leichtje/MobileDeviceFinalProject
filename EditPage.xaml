@@ -2,7 +2,8 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileDeviceFinalProject.EditPage">
+             x:Class="MobileDeviceFinalProject.EditPage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
     <ContentPage.Content>
         
         
@@ -21,21 +22,24 @@
             
             <VerticalStackLayout Margin="10" Spacing="10">
                 <Label Text="Medication Name"></Label>
-                <Entry x:Name="MedNameEntry"/>
+                <Entry x:Name="MedNameEntry" TextColor="White"/>
             
                 <Label Text="Dosage"/>
-                <Entry x:Name="DosageEntry"/>
+                <Entry x:Name="DosageEntry" TextColor="White"/>
             
                 <Label Text="Special Instructions"/>
-                <Entry x:Name="SpecialInstructionsEntry"/>
+                <Entry x:Name="SpecialInstructionsEntry" TextColor="White"/>
             
                 <Label Text="Time Taken"/>
-                <Entry x:Name="TimeTakenEntry"/>
+                <Entry x:Name="TimeTakenEntry" TextColor="White"/>
             
                 <Label Text="Days Taken"/>
-                <Entry x:Name="DaysTakenEntry"/>
+                <Entry x:Name="DaysTakenEntry" TextColor="White"/>
+
+                <Border>
+                   <Button Text="Save Changes" Clicked="OnSaveChangesClicked" HorizontalOptions="Fill"/>
+                </Border>
                 
-                <Button Text="Save Changes" Clicked="OnSaveChangesClicked" HorizontalOptions="Center"/>
             </VerticalStackLayout>
             
         </StackLayout>

@@ -1,19 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileDeviceFinalProject.MainPage">
-
+             x:Class="MobileDeviceFinalProject.MainPage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
     <StackLayout Padding="10" Margin="10">
 
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
+
+                <ColumnDefinition Width="Auto" /> 
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+               <RowDefinition Height="Auto"/>
+               <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <Label Text="My Medications" FontSize="22" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0"/>
-            <Button Text="Add New" Clicked="AddNew_Button_Clicked" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="2"/>
+         <Label Text="Welcome to Pillzilla" FontSize="36" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Padding="10" TextColor="{StaticResource AccentColor}"/>
+            <Label Text="My Medications" FontSize="22" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="0" Grid.Row="1"/>
+            <Border HorizontalOptions="End" VerticalOptions="Center" Grid.Column="2" Grid.Row="1">
+               <Button Text="Add New" Clicked="AddNew_Button_Clicked" />
+            </Border>
+
         </Grid>
 
         <ListView x:Name="MedicationListView" HasUnevenRows="True" SeparatorVisibility="Default" ItemTapped="OnInfoTapped"
@@ -28,17 +37,20 @@
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Column="0">
-                                <Label Text="{Binding MedName}"/>
-                                <Label Text="{Binding Dosage}"/>
-                            </StackLayout>
 
-                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center">
-                                <Button Text="Edit" Clicked="OnEditButtonClicked" HeightRequest="30" WidthRequest="50" />
+                            <StackLayout Grid.Column="0" Spacing="7" Style="{StaticResource ListItems}">
+                                <Label Text="{Binding MedName}" Style="{StaticResource ListItem}"/>
+                                <Label Text="{Binding Dosage}" Style="{StaticResource ListItem}"/>
+                            </StackLayout>
+                            
+                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="15">
+
+                                <Button Text="Edit" Clicked="OnEditButtonClicked" Height="10" Width="10"></Button>
                                 <Button Text="Delete" Clicked="Xbutton_Clicked" HeightRequest="30" WidthRequest="50" />
                             </HorizontalStackLayout>
 
-                            <StackLayout Grid.Column="2">
+
+                            <StackLayout Grid.Column="2" Spacing="5">
                                 <Button Text="Remind" Clicked="OnScheduleNotificationClicked" HeightRequest="30" WidthRequest="70" />
                                 <Label Text="{Binding TimeTaken}" HorizontalOptions="End"/>
                             </StackLayout>
