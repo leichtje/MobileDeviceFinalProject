@@ -2,23 +2,41 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using MobileDeviceFinalProject;
+using Plugin.LocalNotification;
 
 namespace MobileDeviceFinalProject
 {
     public partial class MainPage : ContentPage
     {
         private readonly LocalDbService _dbService;
-        private readonly INotificationService _notificationService;
 
+#if ANDROID
+        private readonly INotificationService _notificationService;
+#endif
+
+#if WINDOWS
+        public MainPage(LocalDbService dbService)
+        {
+            InitializeComponent();
+            _dbService = dbService;
+
+            // Get all rows in DB and bind to MedicationListView ItemSource
+            Task.Run(async () => MedicationListView.ItemsSource = await _dbService.GetMedications());
+        }
+#endif
+
+#if ANDROID
         public MainPage(LocalDbService dbService, INotificationService notificationService)
         {
             InitializeComponent();
             _dbService = dbService;
             _notificationService = notificationService;
 
+
             // Get all rows in DB and bind to MedicationListView ItemSource
             Task.Run(async () => MedicationListView.ItemsSource = await _dbService.GetMedications());
         }
+#endif
 
         protected override async void OnAppearing()
         {
@@ -73,6 +91,15 @@ namespace MobileDeviceFinalProject
             }
         }
 
+#if WINDOWS
+        private async void OnScheduleNotificationClicked(object sender, EventArgs e)
+        { 
+        }
+#endif
+
+
+
+#if ANDROID
         // Schedule notification event handler
         private async void OnScheduleNotificationClicked(object sender, EventArgs e)
         {
@@ -101,5 +128,6 @@ namespace MobileDeviceFinalProject
                 }
             }
         }
-    }
+#endif
+        }
 }
