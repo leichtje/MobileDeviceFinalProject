@@ -8,11 +8,11 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
 
-            <Entry x:Name="MedNameEntry" Placeholder="Medication Name" />
-            <Entry x:Name="DosageEntry" Placeholder="Dosage" />
-            <Entry x:Name="InstructionsEntry" Placeholder="Special Instructions" />
-            <Entry x:Name="TimeTakenEntry" Placeholder="Time Taken (e.g. 3:00 PM)" />
-            <Entry x:Name="DaysTakenEntry" Placeholder="Days Taken (e.g. MWF)" />
+            <Entry x:Name="MedNameEntry" Placeholder="Medication Name" TextColor="White"/>
+            <Entry x:Name="DosageEntry" Placeholder="Dosage" TextColor="White"/>
+            <Entry x:Name="InstructionsEntry" Placeholder="Special Instructions" TextColor="White"/>
+            <Entry x:Name="TimeTakenEntry" Placeholder="Time Taken (e.g. 3:00 PM)" TextColor="White"/>
+            <Entry x:Name="DaysTakenEntry" Placeholder="Days Taken (e.g. MWF)" TextColor="White"/>
 
             <Border>
                <Button Text="Save" Clicked="OnSaveClicked" />
