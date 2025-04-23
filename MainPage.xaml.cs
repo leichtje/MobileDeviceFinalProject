@@ -6,12 +6,13 @@ using Plugin.LocalNotification;
 
 namespace MobileDeviceFinalProject
 {
-   public partial class MainPage : ContentPage
-   {
-      private readonly LocalDbService _dbService;
+
+    public partial class MainPage : ContentPage
+    {
+        private readonly LocalDbService _dbService;
 
 #if ANDROID
-      private readonly INotificationService _notificationService;
+        private readonly INotificationService _notificationService;
 #endif
 
 #if WINDOWS
@@ -19,24 +20,25 @@ namespace MobileDeviceFinalProject
         {
             InitializeComponent();
             _dbService = dbService;
- 
+
             // Get all rows in DB and bind to MedicationListView ItemSource
             Task.Run(async () => MedicationListView.ItemsSource = await _dbService.GetMedications());
         }
 #endif
 
 #if ANDROID
-      public MainPage(LocalDbService dbService, INotificationService notificationService)
-      {
-         InitializeComponent();
-         _dbService = dbService;
-         _notificationService = notificationService;
+        public MainPage(LocalDbService dbService, INotificationService notificationService)
+        {
+            InitializeComponent();
+            _dbService = dbService;
+            _notificationService = notificationService;
 
 
-         // Get all rows in DB and bind to MedicationListView ItemSource
-         Task.Run(async () => MedicationListView.ItemsSource = await _dbService.GetMedications());
-      }
+            // Get all rows in DB and bind to MedicationListView ItemSource
+            Task.Run(async () => MedicationListView.ItemsSource = await _dbService.GetMedications());
+        }
 #endif
+
 
       protected override async void OnAppearing()
       {
@@ -113,6 +115,21 @@ namespace MobileDeviceFinalProject
                   return;
                }
 
+
+#if WINDOWS
+        private async void OnScheduleNotificationClicked(object sender, EventArgs e)
+        { 
+        }
+#endif
+
+
+
+#if ANDROID
+        // Schedule notification event handler
+        private async void OnScheduleNotificationClicked(object sender, EventArgs e)
+        {
+            if ((sender as Button)?.BindingContext is Medication medication)
+
                // Schedule the notification using the injected service
                _notificationService.ScheduleNotification(
                    $"Reminder: {medication.MedName}",
@@ -122,11 +139,15 @@ namespace MobileDeviceFinalProject
                await DisplayAlert("Success", $"Notification scheduled for {notifyTime}.", "OK");
             }
             catch (Exception ex)
+
             {
                await DisplayAlert("Error", $"Failed to schedule notification: {ex.Message}", "OK");
             }
+
+
          }
       }
 #endif
    }
 }
+
