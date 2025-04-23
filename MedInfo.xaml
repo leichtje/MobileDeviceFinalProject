@@ -2,15 +2,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileDeviceFinalProject.MedInfo"
-             Title="MedInfo">
+             Title="MedInfo"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
     
     <StackLayout Padding="20" Spacing="15">
-      <Label Text="{Binding MedName}" />
-      <Label Text="{Binding Dosage}" />
-      <Label Text="{Binding MedInstructions}" />
-      <Label Text="{Binding TimeTaken}" />
-      <Label Text="{Binding DaysTaken}" />
-      <Button Text="Back" Clicked="OnBackClicked" />
+        <Label Text="{Binding MedName}" />
+        
+        <Grid ColumnDefinitions="*,Auto,*" VerticalOptions="Center" Padding="10">
+            <!-- Left Column -->
+            <StackLayout Grid.Column="0" VerticalOptions="Center" Spacing="15">
+                <Label Text="{Binding Dosage, StringFormat='Dosage: {0}'}" HorizontalOptions="Center"/>
+                <Label Text="{Binding MedInstructions}" HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Divider -->
+            <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="Gray" HorizontalOptions="Center" />
+
+            <!-- Right Column -->
+            <StackLayout Grid.Column="2" VerticalOptions="Center" Spacing="15">
+               <Label Text="{Binding TimeTaken, StringFormat='Time Taken: {0}'}" HorizontalOptions="Center"/>
+               <Label Text="{Binding DaysTaken}" HorizontalOptions="Center"/>
+            </StackLayout>
+        </Grid>
+        <Border>
+           <Button Text="Back" Clicked="OnBackClicked" />
+        </Border>
+
    </StackLayout>
     
 </ContentPage>
